@@ -14,6 +14,9 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -61,7 +64,7 @@ QUESTIONS = [
     "What does a really good day look like for you?",
 ]
 deck, script = card_page("Draw a question", QUESTIONS)
-page("index.html", "Marta Krzeminska", f"""
+page("index.html", "Marta", f"""
   <section class="hero">
     <div>
       <h1>I build systems and communities for <i>AI safety</i>.</h1>
@@ -82,7 +85,7 @@ page("index.html", "Marta Krzeminska", f"""
 """, script)
 
 # Work: a progress bar you can push, which never reaches 100%
-page("work.html", "Work · Marta Krzeminska", f"""
+page("work.html", "Work · Marta", f"""
   <section class="hero">
     <div>
       <h1>Works <i>in progress</i>.</h1>
@@ -141,7 +144,7 @@ script = script.replace('<script src="card.js">', """<script>
   window.CARD_ITEMS = window.CARD_ITEMS.map(t => t.replace("{streak}", streak));
 </script>
 <script src="card.js">""")
-page("projects.html", "Projects · Marta Krzeminska", f"""
+page("projects.html", "Projects · Marta", f"""
   <section class="hero">
     <div>
       <h1>Projects <i>in progress</i>.</h1>
@@ -160,7 +163,7 @@ FACTS = [
     "My recurring nightmare is being almost late for a train, a plane or a bus.",
 ]
 deck, script = card_page("Pull a fact", FACTS)
-page("me.html", "Me · Marta Krzeminska", f"""
+page("me.html", "Me · Marta", f"""
   <section class="hero">
     <div>
       <h1>Me, <i>permanently in progress</i>.</h1>
