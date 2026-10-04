@@ -64,7 +64,7 @@ QUESTIONS = [
     "What does a really good day look like for you?",
 ]
 deck, script = card_page("Draw a question", QUESTIONS)
-page("index.html", "Marta", f"""
+page("index.html", "Smarta", f"""
   <section class="hero">
     <div>
       <h1>I build systems and communities for <i>AI safety</i>.</h1>
@@ -85,7 +85,7 @@ page("index.html", "Marta", f"""
 """, script)
 
 # Work: a progress bar you can push, which never reaches 100%
-page("work.html", "Work · Marta", f"""
+page("work.html", "Work · Smarta", f"""
   <section class="hero">
     <div>
       <h1>Works <i>in progress</i>.</h1>
@@ -144,7 +144,7 @@ script = script.replace('<script src="card.js">', """<script>
   window.CARD_ITEMS = window.CARD_ITEMS.map(t => t.replace("{streak}", streak));
 </script>
 <script src="card.js">""")
-page("projects.html", "Projects · Marta", f"""
+page("projects.html", "Projects · Smarta", f"""
   <section class="hero">
     <div>
       <h1>Projects <i>in progress</i>.</h1>
@@ -163,7 +163,7 @@ FACTS = [
     "My recurring nightmare is being almost late for a train, a plane or a bus.",
 ]
 deck, script = card_page("Pull a fact", FACTS)
-page("me.html", "Me · Marta", f"""
+page("me.html", "Me · Smarta", f"""
   <section class="hero">
     <div>
       <h1>Me, <i>permanently in progress</i>.</h1>
