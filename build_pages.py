@@ -74,7 +74,7 @@ page("index.html", "Marta Krzeminska", f"""
   <section class="now">
     <h2>Now</h2>
     <ul>
-      <li><b>FIG</b><span>Building the systems behind AI safety fellowships.</span></li>
+      <li><b><a href="https://futureimpact.group">FIG</a></b><span>Building the systems behind AI safety fellowships.</span></li>
       <li><b>Mentoring</b><span>Women in AI safety, through Magnify Mentoring.</span></li>
       <li><b>Community</b><span>Women in AI Safety meetup at EAG London, and a women's circle in Berlin.</span></li>
     </ul>

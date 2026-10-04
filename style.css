@@ -53,6 +53,8 @@ h1 i { color: var(--accent); font-style: normal; }
 .now li { padding: 18px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 10rem 1fr; gap: 16px; align-items: baseline; }
 .now b { font-family: var(--serif); font-weight: 800; font-size: 19px; line-height: 1.2; }
 .now span { color: var(--muted); }
+.now b a { text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.now b a:hover { color: var(--accent); }
 
 /* Work page: progress bar that never quite finishes */
 .progress { width: 100%; max-width: 360px; margin: 0 auto 18px; position: relative; background: var(--card-front); color: var(--ink); border-radius: 22px; padding: 32px 28px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); text-align: left; }
