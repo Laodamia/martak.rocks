@@ -132,8 +132,15 @@ PROJECTS = [
     "Collages, and an art blog to go with them.",
     "A circle for women and non-binary people in Berlin.",
     "100 words of writing a day, every day, on Medium.",
+    "A seven-year Anki habit: 146,000 flashcard reviews since 2019. Current streak: {streak} days.",
 ]
 deck, script = card_page("Pull a project", PROJECTS)
+# Streak counted from its start date (10 Aug 2026), so the number stays current.
+script = script.replace('<script src="card.js">', """<script>
+  const streak = Math.floor((Date.now() - new Date(2026, 7, 10)) / 86400000) + 1;
+  window.CARD_ITEMS = window.CARD_ITEMS.map(t => t.replace("{streak}", streak));
+</script>
+<script src="card.js">""")
 page("projects.html", "Projects · Marta Krzeminska", f"""
   <section class="hero">
     <div>
