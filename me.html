@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Me · Marta Krzeminska</title>
+<meta name="description" content="Marta Krzeminska builds systems and communities for AI safety.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a class="name" href="index.html">Marta Krzeminska</a><div><a href="work.html">Work</a><a href="projects.html">Projects</a><a href="me.html" aria-current="page">Me</a></div></nav>
+
+  <section class="hero">
+    <div>
+      <h1>Me, <i>permanently in progress</i>.</h1>
+      <p>The full page is on its way. For now, a few random facts.</p>
+    </div>
+    <div class="deck">
+      <div class="blocks" aria-hidden="true"><span class="k1"></span><span class="k2"></span><span class="k3"></span><span class="k4"></span></div>
+      <button class="qcard" id="qcard" aria-label="Pull a fact">
+        <div class="face front"><div><b>Pull a fact</b><small>tap the card</small></div></div>
+        <div class="face back"><p id="q"></p></div>
+      </button>
+      <button class="again" id="again">Another one</button>
+    </div>
+  </section>
+
+  <footer><a href="https://www.linkedin.com/in/krzeminskamarta/">LinkedIn</a><a href="https://github.com/Laodamia">GitHub</a><a href="https://www.admonymous.co/marta-krzeminska">Anonymous feedback</a></footer>
+</div>
+<script>window.CARD_ITEMS = [
+  "I like being on trains and on bridges.",
+  "I'm in bed by 10.15 pm, seven days a week.",
+  "I find the smell of most cosmetics more distracting than pleasant.",
+  "My favourite snack is thin corn cakes.",
+  "My recurring nightmare is being almost late for a train, a plane or a bus."
+];</script>
+<script src="card.js"></script>
+</body>
+</html>

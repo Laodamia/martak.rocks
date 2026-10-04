@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work · Marta Krzeminska</title>
+<meta name="description" content="Marta Krzeminska builds systems and communities for AI safety.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav><a class="name" href="index.html">Marta Krzeminska</a><div><a href="work.html" aria-current="page">Work</a><a href="projects.html">Projects</a><a href="me.html">Me</a></div></nav>
+
+  <section class="hero">
+    <div>
+      <h1>Works <i>in progress</i>.</h1>
+      <p>This page is being built. In the meantime, you can help it along.</p>
+    </div>
+    <div class="deck">
+      <div class="blocks" aria-hidden="true"><span class="k1"></span><span class="k2"></span><span class="k3"></span><span class="k4"></span></div>
+      <div class="progress">
+        <div class="pct"><span id="pct">0</span>%</div>
+        <div class="bar"><div id="bar"></div></div>
+        <p class="status" id="status">Nothing written yet. Very calm.</p>
+      </div>
+      <button class="again" id="push">Help it along</button>
+    </div>
+  </section>
+
+  <footer><a href="https://www.linkedin.com/in/krzeminskamarta/">LinkedIn</a><a href="https://github.com/Laodamia">GitHub</a><a href="https://www.admonymous.co/marta-krzeminska">Anonymous feedback</a></footer>
+</div>
+<script>
+  // Each click closes half the remaining gap, so it never quite gets to 100%.
+  const STATUS = [
+    "Nothing written yet. Very calm.",
+    "Opened a blank document. Stared at it.",
+    "Made a plan for the plan.",
+    "Wrote a first draft. Deleted the first draft.",
+    "Asked for feedback. Got feedback.",
+    "Nearly there. Adding one more section.",
+    "Removing the extra section.",
+    "Final touches. Then more final touches.",
+    "Very, very nearly done."
+  ];
+  let progress = 0, clicks = 0;
+  document.getElementById("push").addEventListener("click", () => {
+    clicks++;
+    progress += (100 - progress) / 2;
+    document.getElementById("bar").style.width = progress + "%";
+    document.getElementById("pct").textContent = progress >= 99 ? progress.toFixed(4) : Math.floor(progress);
+    document.getElementById("status").textContent = STATUS[Math.min(clicks, STATUS.length - 1)];
+  });
+</script>
+</body>
+</html>
