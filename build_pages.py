@@ -88,7 +88,7 @@ page("index.html", "MK.AI", f"""
     <ul>
       <li><b><a href="https://futureimpact.group">FIG</a></b><span>Building the systems behind AI safety fellowships.</span></li>
       <li><b>Mentoring</b><span>Women in AI safety, through Magnify Mentoring.</span></li>
-      <li><b>Community</b><span>Women in AI Safety meetup at EAG London, and a women's circle in Berlin.</span></li>
+      <li><b>Community</b><span>Running a Women/NB circle in Berlin, and leading women in AI safety meetups at EAGs.</span></li>
     </ul>
   </section>
 """, script)
