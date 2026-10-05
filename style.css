@@ -76,3 +76,38 @@ footer a:hover { color: var(--text); }
   .qcard, .progress .bar div { transition: none; }
   .blocks span { animation: none; }
 }
+
+/* Work page: expandable roles */
+.roles ul { margin: 0; }
+.role { border-bottom: 1px solid var(--rule); max-width: 720px; }
+.role summary { list-style: none; cursor: pointer; padding: 18px 0 18px 28px; position: relative; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; }
+.role summary::-webkit-details-marker { display: none; }
+.role summary::before { content: ""; position: absolute; left: 4px; top: 25px; border: 6px solid transparent; border-left: 9px solid var(--accent); transition: transform 0.25s ease; transform-origin: 3px 6px; }
+.role[open] summary::before { transform: rotate(90deg); }
+.role .r-head b { color: var(--text); font-family: var(--serif); font-weight: 800; font-size: 19px; line-height: 1.2; margin-right: 10px; }
+.role .r-org { color: var(--text); }
+.role .r-org a { text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.role .r-when { color: var(--muted); font-size: 14px; white-space: nowrap; }
+.role .r-line { color: var(--muted); grid-column: 1 / -1; }
+.role summary:hover b { color: var(--accent); }
+.role ul { list-style: none; padding: 0 0 20px 28px; margin: 0; }
+.role li { padding: 6px 0 6px 18px; position: relative; display: block; border: 0; }
+.role li::before { content: ""; position: absolute; left: 0; top: 15px; width: 7px; height: 7px; border-radius: 2px; background: var(--k1); }
+.role li:nth-child(2)::before { background: var(--k2); }
+.role li:nth-child(3)::before { background: var(--k4); }
+.role li:nth-child(4)::before { background: var(--k3); }
+.role .r-also { margin: -8px 0 20px 28px; color: var(--muted); font-size: 15px; }
+.roles { margin-bottom: 64px; }
+@media (max-width: 760px) { .role summary { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .role summary::before { transition: none; } }
+.role li a { text-decoration-color: var(--accent); text-underline-offset: 4px; }
+
+/* Work page: "Before that" ticker, like film credits sideways */
+.ticker { margin: 0 0 96px; overflow: hidden; color: var(--muted); -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.ticker .track { display: flex; width: max-content; white-space: nowrap; padding: 6px 0; will-change: transform; }
+.ticker .track span + span { display: none; }
+.ticker.moving .track span + span { display: inline; }
+.ticker:not(.moving) .track { white-space: normal; width: auto; line-height: 1.8; }
+.ticker:hover { color: var(--text); cursor: ew-resize; }
+.role .r-also a { text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.role .r-also a:hover, .role li a:hover { color: var(--accent); }

@@ -33,7 +33,7 @@ HEAD = """<!doctype html>
   <nav><a class="name" href="index.html">Marta Krzeminska</a><div>{links}</div></nav>
 """
 FOOT = """
-  <footer><a href="https://www.linkedin.com/in/krzeminskamarta/">LinkedIn</a><a href="https://github.com/Laodamia">GitHub</a><a href="https://www.admonymous.co/marta-krzeminska">Anonymous feedback</a></footer>
+  <footer><a href="mailto:marta@martak.rocks">Email</a><a href="https://www.linkedin.com/in/krzeminskamarta/">LinkedIn</a><a href="https://github.com/Laodamia">GitHub</a><a href="https://www.admonymous.co/marta-krzeminska">Anonymous feedback</a></footer>
 </div>
 {script}</body>
 </html>
@@ -46,7 +46,7 @@ CURRENT = ' aria-current="page"'
 def page(fname, title, body, script=""):
     links = "".join(f'<a href="{h}"{CURRENT if h == fname else ""}>{l}</a>' for l, h in NAV)
     with open(fname, "w") as f:
-        f.write(HEAD.format(title=title, og_title=title.replace("Smarta", "Marta Krzeminska"), links=links) + body + FOOT.format(script=script))
+        f.write(HEAD.format(title=title, og_title=title.replace("MK.AI", "Marta Krzeminska"), links=links) + body + FOOT.format(script=script))
 
 
 def card_page(front, items):
@@ -73,7 +73,7 @@ QUESTIONS = [
     "What does a really good day look like for you?",
 ]
 deck, script = card_page("Draw a question", QUESTIONS)
-page("index.html", "Smarta", f"""
+page("index.html", "MK.AI", f"""
   <section class="hero">
     <div>
       <h1>I build systems and communities for <i>AI safety</i>.</h1>
@@ -93,44 +93,169 @@ page("index.html", "Smarta", f"""
   </section>
 """, script)
 
-# Work: a progress bar you can push, which never reaches 100%
-page("work.html", "Work · Smarta", f"""
+# Work: three expandable roles, a one-line "before that", and a career you can push along.
+CAREER = [
+    "Finished a BA at Oxford. Oriental Studies, a first.",
+    "Finished a master's in translation.",
+    "Got my first job: ranking lawyers.",
+    "Discovered I don't like office jobs.",
+    "Did another master's, in endangered languages. Completely useless. No regrets.",
+    "Started working in start-ups.",
+    "Discovered effective altruism.",
+    "Did a CFAR workshop.",
+    "Fell in love with language start-ups.",
+    "Got into the rationality community.",
+    "Did a career review.",
+    "Decided to become a data scientist.",
+    "Was a digital nomad. Retrained as a data scientist.",
+    "Relearned stats. Picked up Python.",
+    "Started freelancing.",
+    "Oh my God, COVID.",
+    "Started an accountability coaching business.",
+    "Got my first EA job, at Mind Ease.",
+    "Lots of marketing.",
+    "Data analytics.",
+    "Oh my God, ChatGPT is out.",
+    "Decided to pivot to AI safety.",
+    "Got rejected from a BlueDot course. Did it anyway.",
+    "Ran a marathon. Budapest.",
+    "Did another BlueDot course.",
+    "Joined the High Impact Professionals accelerator.",
+    "Got career coaching from 80,000 Hours.",
+    "Landed the perfect job.",
+    "Burned out.",
+    "Took six months off. Saw a lot of tea houses. Did a lot of aerial hammock.",
+    "Freelanced for AI safety orgs.",
+    "Got a part-time job.",
+    "Ran another marathon. Istanbul.",
+    "Put myself on a contract. It's part of my job.",
+    "Ran another marathon. Rome.",
+]
+# Shown in order after the last step; the final one stays put.
+AFTER = [
+    "Still in progress.",
+    "Very nearly done?",
+    "Is it ever done?",
+    "How long, exactly?",
+    "How long are your timelines?",
+    "This seems to be a long timeline.",
+    "What now?",
+    "Am I retired yet?",
+    "No going back now.",
+    "I hope at least I'm happy.",
+]
+
+def role(title, org, when, line, bullets, extra=""):
+    lis = "".join(f"<li>{b}</li>" for b in bullets)
+    return f"""      <details class="role">
+        <summary><span class="r-head"><b>{title}</b><span class="r-org">{org}</span></span><span class="r-when">{when}</span><span class="r-line">{line}</span></summary>
+        <ul>{lis}</ul>{extra}
+      </details>
+"""
+
+
+ROLES = (
+    role("Programme Operations Lead", '<a href="https://futureimpact.group">Future Impact Group</a>', "2025 to now",
+         "I'm the backend. I rebuilt how the fellowship picks people. Now I'm rebuilding the ops.", [
+             "Built a three-stage selection process that lets a three-person team get through 7,000+ applications for 30 research projects.",
+             "Set up compliance for our UK trading entity.",
+             "Make sure everyone gets paid, legally and on time. Also: contracts, bookkeeping, and automating anything that happens twice.",
+         ])
+    + role("Operations Support &amp; AI Policy Researcher", '<a href="https://www.longtermresilience.org">Centre for Long-Term Resilience</a>', "2024&ndash;25",
+           "I helped a UK AI policy unit punch above its weight.", [
+               'Co-authored <a href="https://www.longtermresilience.org/reports/frontier-ai-safety-frameworks-need-to-include-risk-governance/">Why frontier AI safety frameworks need to include risk governance</a>.',
+               "Managed the inbox and calendar of Jess Whittlestone, head of the AI Policy Unit.",
+               "Guided the team to structure their tasks and priorities.",
+           ])
+    + role("Freelance marketer and writer", "EA and AI safety orgs", "2020&ndash;25",
+           "Short projects, many hats, one direction.", [
+               'Designed a knowledge base for the <a href="https://condor.camp">Condor Initiative</a>.',
+               'Got tonnes of people applying to <a href="https://bluedot.org/">BlueDot</a>\'s biosecurity course, through LinkedIn.',
+               'Had fun leading two cohorts of <a href="https://bluedot.org/">BlueDot</a>\'s AI governance course.',
+           ], '<p class="r-also">Also worked with: <a href="https://simoninstitute.ch/">Simon Institute for Longterm Governance</a>, <a href="https://givingmultiplier.org/">Giving Multiplier</a>, <a href="https://quantifieduncertainty.org/">QURI</a></p>')
+)
+
+# Newest first, to match the roles above.
+BEFORE = " &bull; ".join([
+    "Operations Lead at Arkose (2023)",
+    "Head of Marketing, then Data Analyst at Mind Ease (2021&ndash;23)",
+    "Computational Linguist at Tisane Labs (2021)",
+    "Marketing Lead at JAM (2018&ndash;21)",
+    "CX Manager at Strong Fitness (2019&ndash;20)",
+    "Marketing Director, then Content Editor at HelloTalk (2018)",
+    "VP of Content at Leaf (2017&ndash;18)",
+    "Director of Outreach at LinguaLift (2015&ndash;18)",
+    "Translator at Mi Polin (2016&ndash;17)",
+    "Content Editor at The Wellbeing Network (2014&ndash;15)",
+    "Assistant Curator at the Endangered Languages Archive (2014)",
+    "Researcher at Chambers and Partners (2012&ndash;13)",
+    "Translator at Brandbank (2012)",
+    "Intern on the Dead Sea Scrolls Project (2008&ndash;09)",
+])
+
+page("work.html", "Work · MK.AI", f"""
   <section class="hero">
     <div>
-      <h1>Works <i>in progress</i>.</h1>
-      <p>This page is being built. In the meantime, you can help it along.</p>
+      <h1>I make small teams look <i>suspiciously big</i>.</h1>
+      <p>Mostly for AI safety: the systems, processes and quiet automations that mean nobody does the boring bit twice.</p>
     </div>
     <div class="deck">
       {BLOCKS}
       <div class="progress">
-        <div class="pct"><span id="pct">0</span>%</div>
+        <div class="pct">Step <span id="step">0</span></div>
         <div class="bar"><div id="bar"></div></div>
-        <p class="status" id="status">Nothing written yet. Very calm.</p>
+        <p class="status" id="status">Career: not started. Very calm.</p>
       </div>
-      <button class="again" id="push">Help it along</button>
+      <button class="again" id="push">Advance my career</button>
     </div>
   </section>
-""", """<script>
-  // Each click closes half the remaining gap, so it never quite gets to 100%.
-  const STATUS = [
-    "Nothing written yet. Very calm.",
-    "Opened a blank document. Stared at it.",
-    "Made a plan for the plan.",
-    "Wrote a first draft. Deleted the first draft.",
-    "Asked for feedback. Got feedback.",
-    "Nearly there. Adding one more section.",
-    "Removing the extra section.",
-    "Final touches. Then more final touches.",
-    "Very, very nearly done."
-  ];
-  let progress = 0, clicks = 0;
-  document.getElementById("push").addEventListener("click", () => {
-    clicks++;
-    progress += (100 - progress) / 2;
+
+  <section class="now roles">
+    <h2>Work</h2>
+{ROLES}  </section>
+
+  <section class="now before">
+    <h2>Before that</h2>
+    <div class="ticker" id="ticker"><div class="track" id="track"><span>{BEFORE} &bull;&nbsp;</span><span aria-hidden="true">{BEFORE} &bull;&nbsp;</span></div></div>
+  </section>
+""", f"""<script>
+  // One career step per click. The bar closes 12% of the remaining gap each time, so it never reaches 100%.
+  const CAREER = {json.dumps(CAREER, ensure_ascii=False)};
+  const AFTER = {json.dumps(AFTER, ensure_ascii=False)};
+  let progress = 0, step = 0;
+  document.getElementById("push").addEventListener("click", () => {{
+    step++;
+    progress += (100 - progress) * 0.12;
     document.getElementById("bar").style.width = progress + "%";
-    document.getElementById("pct").textContent = progress >= 99 ? progress.toFixed(4) : Math.floor(progress);
-    document.getElementById("status").textContent = STATUS[Math.min(clicks, STATUS.length - 1)];
-  });
+    document.getElementById("step").textContent = step;
+    document.getElementById("status").textContent = step <= CAREER.length
+      ? CAREER[step - 1]
+      : AFTER[Math.min(step - CAREER.length - 1, AFTER.length - 1)];
+  }});
+
+  // "Before that" ticker: drifts left forever; faster on hover, and horizontal scrolling pushes it along.
+  (function () {{
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ticker = document.getElementById("ticker"), track = document.getElementById("track");
+    const loop = track.firstElementChild;
+    let x = 0, speed = 40, boost = 0, last = performance.now();
+    ticker.addEventListener("mouseenter", () => speed = 160);
+    ticker.addEventListener("mouseleave", () => speed = 40);
+    ticker.addEventListener("wheel", e => {{
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {{ e.preventDefault(); boost += e.deltaX; }}
+    }}, {{ passive: false }});
+    function frame(now) {{
+      const dt = Math.min((now - last) / 1000, 0.1); last = now;
+      x -= speed * dt + boost; boost = 0;
+      const w = loop.offsetWidth;
+      if (-x >= w) x += w;
+      if (x > 0) x -= w;
+      track.style.transform = `translateX(${{x}}px)`;
+      requestAnimationFrame(frame);
+    }}
+    ticker.classList.add("moving");
+    requestAnimationFrame(frame);
+  }})();
 </script>
 """)
 
@@ -153,7 +278,7 @@ script = script.replace('<script src="card.js">', """<script>
   window.CARD_ITEMS = window.CARD_ITEMS.map(t => t.replace("{streak}", streak));
 </script>
 <script src="card.js">""")
-page("projects.html", "Projects · Smarta", f"""
+page("projects.html", "Projects · MK.AI", f"""
   <section class="hero">
     <div>
       <h1>Projects <i>in progress</i>.</h1>
@@ -172,7 +297,7 @@ FACTS = [
     "My recurring nightmare is being almost late for a train, a plane or a bus.",
 ]
 deck, script = card_page("Pull a fact", FACTS)
-page("me.html", "Me · Smarta", f"""
+page("me.html", "Me · MK.AI", f"""
   <section class="hero">
     <div>
       <h1>Me, <i>permanently in progress</i>.</h1>
