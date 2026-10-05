@@ -11,6 +11,15 @@ HEAD = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="Marta Krzeminska builds systems and communities for AI safety.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MK.AI">
+<meta property="og:title" content="{og_title}">
+<meta property="og:description" content="Marta Krzeminska builds systems and communities for AI safety.">
+<meta property="og:image" content="https://martak.rocks/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="I build systems and communities for AI safety. Marta Krzeminska, martak.rocks">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,7 +46,7 @@ CURRENT = ' aria-current="page"'
 def page(fname, title, body, script=""):
     links = "".join(f'<a href="{h}"{CURRENT if h == fname else ""}>{l}</a>' for l, h in NAV)
     with open(fname, "w") as f:
-        f.write(HEAD.format(title=title, links=links) + body + FOOT.format(script=script))
+        f.write(HEAD.format(title=title, og_title=title.replace("Smarta", "Marta Krzeminska"), links=links) + body + FOOT.format(script=script))
 
 
 def card_page(front, items):
