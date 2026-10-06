@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lost · MK.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<style>
+/* Absolute paths only: GitHub Pages serves this page at any missing URL, however deep. */
+:root {
+  --bg: #1b1a18; --text: #efe9df; --muted: #a39b91; --accent: #d9542f;
+  --k1: #2f6f62; --k2: #7a4e8c; --k3: #d9542f; --k4: #e9b23f;
+  --serif: Fraunces, Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--text); font: 17px/1.6 Inter, system-ui, sans-serif; display: flex; align-items: center; justify-content: center; text-align: center; padding: 32px 20px; }
+main { max-width: 760px; }
+.strip { display: flex; gap: 8px; justify-content: center; margin-bottom: 36px; }
+.strip span { height: 10px; border-radius: 6px; animation: wander 9s ease-in-out infinite; }
+.strip span:nth-child(1) { width: 64px; background: var(--k1); }
+.strip span:nth-child(2) { width: 28px; background: var(--k2); animation-delay: -2s; }
+.strip span:nth-child(3) { width: 44px; background: var(--k3); animation-delay: -4s; }
+.strip span:nth-child(4) { width: 16px; background: var(--k4); animation-delay: -6s; }
+@keyframes wander { 33% { transform: translateY(-6px) rotate(-4deg); } 66% { transform: translateY(4px) rotate(3deg); } }
+@media (prefers-reduced-motion: reduce) { .strip span { animation: none; } }
+.code { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(30px, 5.5vw, 48px); line-height: 1.15; margin: 0 0 36px; }
+.home { color: var(--accent); font-weight: 600; text-decoration: none; }
+.home:hover { text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="strip" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <p class="code">404</p>
+  <h1>Looks like you're lost.<br>It's ok, we've all been there.</h1>
+  <a class="home" href="/">Take me home &rarr;</a>
+</main>
+</body>
+</html>
