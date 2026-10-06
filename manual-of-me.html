@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Manual of Me · Marta Krzeminska</title>
+<meta name="description" content="How it is to work with Marta Krzeminska.">
+<meta property="og:title" content="Manual of Me · Marta Krzeminska">
+<meta property="og:description" content="How it is to work with me.">
+<meta property="og:image" content="https://martak.rocks/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<style>
+:root {
+  --bg: #fdf6ec; --text: #22201d; --muted: #6f675d; --rule: rgba(34, 32, 29, 0.12);
+  --accent: #c2471f; --k1: #2f6f62; --k2: #7a4e8c; --k3: #d9542f; --k4: #e9b23f;
+  --serif: Fraunces, Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1b1a18; --text: #efe9df; --muted: #a39b91; --rule: rgba(239, 233, 223, 0.14); --accent: #e0683f; }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.7 Inter, system-ui, sans-serif; }
+main { max-width: 680px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+
+.strip { display: flex; gap: 8px; justify-content: center; padding: 40px 0 0; }
+.strip span { height: 10px; border-radius: 6px; animation: breathe 9s ease-in-out infinite; }
+.strip span:nth-child(1) { width: 64px; background: var(--k1); }
+.strip span:nth-child(2) { width: 28px; background: var(--k2); animation-delay: -2s; }
+.strip span:nth-child(3) { width: 44px; background: var(--k3); animation-delay: -4s; }
+.strip span:nth-child(4) { width: 16px; background: var(--k4); animation-delay: -6s; }
+@keyframes breathe { 50% { transform: scaleX(1.35); } }
+@media (prefers-reduced-motion: reduce) { .strip span { animation: none; } }
+
+header { text-align: center; padding: 28px 0 8px; }
+header h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(36px, 7vw, 52px); line-height: 1.05; margin: 0 0 12px; }
+header .by { color: var(--muted); font-size: 15px; margin: 0; }
+header .by a { color: inherit; }
+.intro { margin-top: 40px; }
+.intro h2 { font-family: var(--serif); font-size: 24px; line-height: 1.2; margin: 0 0 12px; }
+
+nav.toc { margin: 40px 0 8px; padding: 22px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+nav.toc h2 { font: 600 12px/1 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; }
+nav.toc li { margin: 0 0 10px; }
+nav.toc li.l3 { padding-left: 20px; font-size: 15px; }
+nav.toc a { font-weight: 700; text-decoration: none; color: var(--text); }
+nav.toc a:hover { color: var(--accent); }
+nav.toc li { line-height: 1.5; }
+nav.toc span { color: var(--muted); font-size: 14px; }
+nav.toc span::before { content: "· "; }
+
+article h2, article h3 { font-family: var(--serif); line-height: 1.2; scroll-margin-top: 24px; }
+article h2 { font-size: 30px; margin: 64px 0 4px; }
+article h3 { font-size: 22px; margin: 40px 0 4px; }
+article h2 a, article h3 a { color: inherit; text-decoration: none; }
+article h2 a:hover::after, article h3 a:hover::after { content: " #"; color: var(--accent); }
+.tldr { color: var(--muted); font-style: italic; margin: 0 0 18px; }
+article ul { padding-left: 22px; }
+article li { margin: 6px 0; }
+article li::marker { color: var(--accent); }
+article li.toggle { list-style: none; margin-left: -22px; }
+summary { cursor: pointer; list-style: none; padding-left: 22px; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: ""; position: absolute; left: 4px; top: .62em; border: 5px solid transparent; border-left: 7px solid var(--accent); transition: transform .15s; transform-origin: 3px 50%; }
+details[open] > summary::before { transform: rotate(90deg); }
+summary:hover { color: var(--accent); }
+details > ul { margin: 4px 0 10px 22px; }
+article hr { border: 0; height: 1px; background: var(--rule); margin: 56px 0; }
+article code { font-size: .9em; }
+.top { display: block; text-align: center; margin-top: 48px; font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="strip" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<main>
+<header>
+  <h1>Manual of Me</h1>
+  <p class="by">How it is to work with <a href="https://martak.rocks">Marta Krzeminska</a></p>
+</header>
+<section class="intro">
+  <h2>What is this doc?</h2>
+<p>A Manual of Me, aka <em>How It Is to Work with Me</em>, is a guide for colleagues, prospective employers and business partners. Rather than hard rules, read it as my guidelines and preferences. They will naturally adapt <em>slightly</em> to each workplace or project.</p>
+<p><em>This is a living document that I update regularly.  Last update: 4 October 2026</em> </p>
+</section>
+<nav class="toc" aria-label="Contents">
+  <h2>Contents</h2>
+  <ol>
+<li class="l2"><a href="#work-philosophy">Work Philosophy</a> <span>Prioritise deep work, plan ahead, maintain well-being, and get motivation from autonomy &amp; growth</span></li>
+<li class="l2"><a href="#communication-style">Communication Style</a> <span>Asynchronous like work, infused with tell culture</span></li>
+<li class="l3"><a href="#feedback-preferences">Feedback Preferences</a> <span>Constructive, immediate, NVC</span></li>
+<li class="l3"><a href="#collaboration-style">Collaboration Style</a> <span>Happy to take most roles as long as responsibilities are clear</span></li>
+<li class="l2"><a href="#availability-boundaries">Availability &amp; Boundaries</a> <span>Deep work, consistent work and off time</span></li>
+<li class="l2"><a href="#strengths-areas-for-growth">Strengths &amp; Areas for Growth</a> <span>Goal-oriented, quantified planner. Wants to develop a growth mindset &amp; align the map with the territory</span></li>
+<li class="l3"><a href="#strengths-skills">Strengths &amp; Skills</a> <span>Ops, precision, strategy</span></li>
+<li class="l3"><a href="#areas-for-growth">Areas for Growth</a> <span>Tech, growth mindset</span></li>
+<li class="l2"><a href="#personal-interests-life">Personal Interests &amp; Life</a> <span>Protective of good habits, but experience-seeking</span></li>
+  </ol>
+</nav>
+<article>
+<h2 id="work-philosophy"><a href="#work-philosophy">Work Philosophy</a></h2>
+<p class="tldr">Prioritise deep work, plan ahead, maintain well-being, and get motivation from autonomy &amp; growth</p>
+
+<ul>
+<li class="toggle"><details><summary><strong>Deep Work Focus:</strong> Immersion in pivotal tasks.</summary><ul>
+<li>I prefer to begin the day focusing on completing 1-3 critical tasks, ideally without distractions like messaging or emails for the first 2-3 hours.</li>
+<li>When setting tasks and goals, I prefer to focus on input rather than output. This is because sometimes outcomes can depend on others or on factors out of my control.</li>
+</ul></details></li>
+<li class="toggle"><details><summary><strong>Planning Approach</strong>: Strategy and foresight.</summary><ul>
+<li>It’s important to me to dedicate plenty of time to plan each task before starting to execute it. I’ll try to identify potential blockers, strategise to mitigate them, and aim to establish an “MVP” for task completion.</li>
+<li>My rule is: better to underpromise and overdeliver than the reverse.</li>
+</ul></details></li>
+<li class="toggle"><details><summary><strong>Well-being Perspective</strong>: Balance and pacing.</summary><ul>
+<li>I view life and work as a marathon. Over time, I’ve learned to look at projects’ goals and health in the long term. The outcomes of the causes we work on are complex and can take years to get to. It’s important to keep the cogs of one’s physical and mental health well-oiled to maintain a steady level of efficiency throughout that journey.</li>
+<li>I monitor my <strong><em>daily</em></strong> well-being to prevent burnout and overworking. If I need to take time off to address personal or health issues, I expect to be able to take it without a detailed explanation (<em>and</em> expect others to do the same!)</li>
+</ul></details></li>
+<li class="toggle"><details><summary><strong>Open Sharing:</strong> Little work/life separation in communication.</summary><ul>
+<li>Work is one of the largest parts of my life. It impacts and is impacted by everything else. In work communication, I’m often sharing personal and well-being updates.</li>
+<li>If specific topics or sharing too many personal details is uncomfortable, I expect that others will communicate that preference.</li>
+</ul></details></li>
+<li class="toggle"><details><summary><strong>Motivation</strong>: Learning, autonomy, and measurable outcomes.</summary><ul>
+<li>I value autonomy at work. It’s important to me to initially dedicate time to establish clear operational guidelines, e.g., defining budgets and which decisions require consultation, rather than frequently pausing to double-check the rules.</li>
+<li>To stay motivated, I need to see the measurable impact of my work in day-to-day tasks, e.g. by setting measurable goals. I also want a clear model of how daily tasks translate into supporting the team/organisation's mission.</li>
+<li>I enjoy learning through practice and often choose tasks where I’m less experienced but that offer growth opportunities. I want my work to allow me time for structured L&amp;D, e.g. to take courses as part of working hours.</li>
+</ul></details></li>
+</ul>
+<h2 id="communication-style"><a href="#communication-style">Communication Style</a></h2>
+<p class="tldr">Asynchronous like work, infused with tell culture</p>
+
+<ul>
+<li><strong>Personal Communication:</strong> <strong>Tell Culture.</strong> On the Ask-Guess-Tell culture spectrum, I aim to be more <a href="https://www.lesswrong.com/posts/rEBXN3x6kXgD4pLxs/tell-culture">Tell Culture</a>. This means I <em>will ask</em> when I want something, even if I think hearing a “no” is more likely than hearing a “yes”. I will also interpret others’ communication as suggestions and say "no" if what’s suggested doesn’t work for me.</li>
+<li><strong>Consistent Platforms</strong>: I prefer to choose communication tools and stick with them. Usually, it’s best to have one tool for all types of communication (e.g. Slack). If not, then use one tool for IMs and another for longer/structured messages.</li>
+<li class="toggle"><details><summary><strong>Efficiency Over Frequency</strong>: A single, well-structured message is often more effective than multiple short ones. Similarly, you can replace many meetings with a comprehensive message.</summary><ul>
+<li><strong>No Distraction.</strong> I don’t have notifications on any communication platform as I find them unnecessarily distracting. I typically set aside time during the day to access these platforms and reply to messages (cf. <a href="#availability-boundaries">Availability &amp; Boundaries</a>).</li>
+<li><strong>Urgency Signals</strong>: It's important to have a clear way to signal when something is urgent or "on fire" to ensure it gets immediate attention.</li>
+</ul></details></li>
+<li class="toggle"><details><summary><strong>Structured Messaging</strong>: I value clarity and precision in communication. When sending messages, I usually follow the format below, and I appreciate it when others do the same.</summary><ul>
+<li><strong>Topic Sentence</strong>: Start with a clear statement about the subject of the message.</li>
+<li><strong>Action Required</strong>: Specify if you need feedback, thoughts, or if it's just for information.</li>
+<li><strong>Time Input</strong>: Estimate how long the action might take.</li>
+<li><strong>Deadline</strong>: Mention by when the action or response is needed.</li>
+</ul></details></li>
+<li class="toggle"><details><summary><strong>Default Deadlines:</strong> When I need someone's input on something time-sensitive, I'll often say what I'll do if I don't hear back, e.g. "<em>If I don't hear from you by Thursday 12:00, I'll send it as it is.</em>"</summary><ul>
+<li>It's not meant as pressure. It lets work keep moving without everyone being available at the same time.</li>
+<li>If something was supposed to go out in both our names, my default is to send it in my name alone.</li>
+</ul></details></li>
+<li class="toggle"><details><summary><strong>Structured Meetings</strong>: Meetings should have a clearly specified goal, come with an agenda, and end with action points/next steps. In my view, the person suggesting the meeting should make sure these elements are in place.</summary><ul>
+<li><strong>Meetings are</strong> <strong>bandwidth-heavy.</strong> Meetings, online and offline, are very tiring for me. If we measured it in attention/energy units, we can estimate that 1h of meetings translates into 2h of work. It is for this reason that I prefer to limit them.</li>
+<li><strong>Focus alone, share later</strong>. I find it challenging to think deeply or problem-solve on the spot, in a meeting. I’d much rather take the question/issue/idea and ponder it alone to later share my thoughts in a structured way.</li>
+<li><strong>Large group discussions take a lot of work to follow.</strong> I find it hard to follow group discussions that involve more than three people, especially if the conversation is unstructured/unmoderated. This means that, in these situations, I’ll often be quiet and might need specific prompting to speak out.</li>
+</ul></details></li>
+<li><strong>Progress Reports</strong>: To track progress, I’ll use project management software, whether it’s a team-wide habit or not.</li>
+</ul>
+<h3 id="feedback-preferences"><a href="#feedback-preferences">Feedback Preferences</a></h3>
+<p class="tldr">Constructive, immediate, NVC</p>
+
+<ul>
+<li><strong>Open &amp; Balanced</strong>: I appreciate direct and honest feedback. It's helpful when paired with positive or appreciative comments, making it constructive and easier to digest.</li>
+<li><strong>Timely &amp; Relevant</strong>: I value immediate, ongoing feedback. If there's an issue or something to address, it's beneficial to know right away, especially in fast-paced projects. This helps in making timely course corrections.</li>
+<li><strong>Communication Style</strong>: I prefer one-on-one feedback, ideally verbally, as it’s a higher-fidelity form of communication that preserves nuance and emotion. Using Nonviolent Communication (NVC) is ideal, focusing on constructive ways to improve and grow.</li>
+</ul>
+<h3 id="collaboration-style"><a href="#collaboration-style">Collaboration Style</a></h3>
+<p class="tldr">Happy to take most roles as long as responsibilities are clear</p>
+
+<ul>
+<li>Roles on projects have to be clear. Each project needs a leader. For larger projects, a <a href="https://www.wikiwand.com/en/Responsibility_assignment_matrix">responsibility assignment matrix</a> (aka RACI) is helpful. Once the roles and responsibilities are clear, I’m comfortable both as a collaborator and as a leader.</li>
+</ul>
+<h2 id="availability-boundaries"><a href="#availability-boundaries">Availability &amp; Boundaries</a></h2>
+<p class="tldr">Deep work, consistent work and off time</p>
+
+<ul>
+<li><strong>Deep Work Focus</strong>: I prioritise deep, uninterrupted work sessions over constant availability. If you need "on-call" availability, please communicate that clearly.</li>
+<li><strong>Protecting Time Off</strong>: I value personal time and aim to protect it. Typically, I'll announce any planned time off 2-3 weeks in advance.</li>
+<li><strong>Adaptable Work Hours:</strong> While I can adjust my work hours based on location or project needs, it's essential that once they're set, I stick to them. Consistency helps me maintain a balanced work-life rhythm.</li>
+</ul>
+<h2 id="strengths-areas-for-growth"><a href="#strengths-areas-for-growth">Strengths &amp; Areas for Growth</a></h2>
+<p class="tldr">Goal-oriented, quantified planner. Wants to develop a growth mindset &amp; align the map with the territory</p>
+
+<h3 id="strengths-skills"><a href="#strengths-skills">Strengths &amp; Skills</a></h3>
+<p class="tldr">Ops, precision, strategy</p>
+
+<ul>
+<li><strong>Operational Leadership</strong>: I’m good at turning abstract concepts into actionable projects.</li>
+<li><strong>Strategic Planning</strong>: I have a forward-thinking approach, always keeping an eye on upcoming challenges and opportunities.</li>
+<li><strong>Focused Precision</strong>: I’m known for deep concentration and attention to detail.</li>
+<li><strong>Quantitative Thinking</strong>: I try to quantify everything I can. I use degrees of certainty when making predictions and have experience in decision-making with limited information.</li>
+<li><strong>Project Completion</strong>: I’m dedicated to seeing projects through to the end, especially during the crucial final stages when others might already feel bored or fatigued.</li>
+<li><strong>Decision-making and Prioritisation</strong>: I used to work as an accountability coach—I’m familiar with several tools and techniques to enhance decision quality, and I’m adept at asking the right questions to clear obstacles.</li>
+</ul>
+<h3 id="areas-for-growth"><a href="#areas-for-growth">Areas for Growth</a></h3>
+<p class="tldr">Tech, growth mindset</p>
+
+<ul>
+<li><strong>Growth Mindset</strong>: I tend to get defensive and protective of my ideas when someone criticises them, although it largely depends on how that criticism is delivered. I’m continually working on adopting a more growth-oriented mindset by approaching tasks with humility and by seeking feedback early.</li>
+<li><strong>Empathetic Understanding</strong>: I can get impatient or annoyed when interacting with individuals outside the rationality/EA bubble who hold views and exhibit behaviours or communication patterns that feel alien to me. I try to translate this feeling into curiosity and focus on understanding the models that lead others to think and behave differently than what I’m used to.</li>
+<li><strong>Technical Acumen</strong>: I want to deepen my understanding of the AI safety research landscape and its technical intricacies. I’d love to learn about algorithms and linear algebra.</li>
+<li><strong>Prone to the Sunk-Cost Fallacy:</strong> This isn't unusual, but I suspect I have a strong tendency toward completion bias. I might find it hard to abandon a task even if it’s no longer useful, especially if it’s <em>very close</em> to being finished.</li>
+</ul>
+<h2 id="personal-interests-life"><a href="#personal-interests-life">Personal Interests &amp; Life</a></h2>
+<p class="tldr">Protective of good habits, but experience-seeking</p>
+
+<p><em>A pretty random collection of facts about me.</em></p>
+<p><strong>Activity Planner</strong>: Organising activities spills over from my ops mindset into my personal life, where I’m often the one rallying others to try something new.</p>
+<p><strong>Adventure Seeker</strong>: I like activities that offer new sensations or experiences that are slightly physically challenging or out of my comfort zone, physically or emotionally. Ecstatic dancing, breathwork, shooting range, trampolining - if there is something new to do in a city, I’m likely to find it and get others to try it!</p>
+<p><strong>Relating Enthusiast</strong>: I’m a fan of authentic relating (AR) and radical honesty (RH). Wherever I am, I facilitate workshops to introduce others to this concept. I completed a week-long Radical Honesty Facilitation program.</p>
+<p><strong>Music</strong>: I’m learning to play bass guitar! This is to complement my drumming, a skill I’m still happily amateur at, after years of casual playing.</p>
+<p><strong>Social Pacing</strong>: I love (some!) people, but socialising takes a lot of energy for me (a bit like meetings). I keep to a few social plans a week and protect at least three free evenings. If I skip after-work drinks or leave a team dinner early, it's not about you. I'd rather say yes to fewer things and be fully present.</p>
+<p><strong>Sleep Schedule</strong>: I’m also very protective of my sleep schedule and rarely go to bed later than 10.30 pm. This often impacts my choice of socialising activities. </p>
+<p><strong>Morning Rituals</strong>: I have a very structured morning routine that starts at 7 am and includes meditation, stretching, a workout, and Anki flashcards. I will <em>very rarely</em> compromise on this (exceptions happen when I travel or if I compromise my sleep schedule).</p>
+<p><strong>Noise Sensitivity</strong>: I think I’m above average in my sensitivity to sound. I usually wear earplugs on the street and at work, or walk around the house wearing noise-cancelling headphones (or both earplugs and headphones). I find many common sounds disturbing. It’s hard for me to focus on work or conversation in public places — it gets confusing and tiring very quickly. This is one reason I don’t particularly enjoy going to bars and prefer 1-1 meetings in quiet locations. </p>
+<p><strong>Writer at Heart</strong>: I enjoy writing, used to write on <a href="https://www.quora.com/profile/Marta-Krzeminska">Quora</a>, and for a while I had a small hobby of writing genuine, tongue-in-cheek, <a href="https://maps.app.goo.gl/bD17vUz4sdn1KuUh7">elaborate reviews on Google Maps</a> (including reviews of public toilets and grocery stores). Now I send an <a href="https://100words.substack.com">occasional newsletter</a>. </p>
+<p><strong>Fitness</strong>: I work out every day, alternating resistance and cardio. I want to slow down age-related degeneration, and it helps me maintain better mental health. In 2023, I ran the Budapest Marathon; in 2024, the Istanbul Marathon; in 2025, the Midnight Sun Marathon in Tromsø. Since then, I took a break from running to focus on aerial arts (hammock, silks, trapeze), callisthenics, and the gym. Although… I’m planning to run the Romeo &amp; Juliet half-marathon in Verona in Feb 2027.</p>
+<hr>
+<p><strong>You made it to the end! 👏</strong></p>
+<p>This was a long doc, thanks for reading! </p>
+<p><em>Next steps?</em></p>
+<ul>
+<li>Have a cup of tea. 🍵</li>
+<li>If you have questions or comments, feel free to <a href="mailto:marta@martak.rocks">email me</a>!</li>
+<li>If you recently worked with me and think that some of this is inaccurate, let me know.</li>
+</ul>
+</article>
+<a class="top" href="#">Back to top</a>
+</main>
+</body>
+</html>
