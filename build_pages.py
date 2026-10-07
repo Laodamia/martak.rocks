@@ -301,11 +301,11 @@ SECTIONS = [
         ('Data writing', '2020–21', 'Articles on Twitter sentiment, emoji and how people value their time. Is mango sticky rice the key to productivity?', 'data-writing', 'https://towardsdatascience.com/author/krzem-m/', None),
         ('Data portfolio', '2020', 'The projects I built while retraining as a data scientist. Python, statistics and plenty of scatter plots.', 'data-portfolio', 'https://github.com/Laodamia/Data-Portfolio', None),
     ]),
-    ('Making things', 'k1', 'I care about doing silly things properly.', [
+    ('Making things', 'k1', 'Random idea? I sometimes just go with it.', [
         ('Review Everything!', '2023–now', 'Silly, narrative, and sometimes poetic Google Maps reviews. 300+ as of now. Ask me about my fav one!', 'reviews', 'https://maps.app.goo.gl/mJYKFWvYLoHwY6i28', None),
         ('Accountability coaching', '2020–21', 'My coaching business, helping entrepreneurs actually finish their projects. The site lives on in the web archive.', 'coaching', 'https://web.archive.org/web/20210418091907/https://www.accountabilitycoa.ch/', None),
         ('10min Strength', '2020', 'A workout app: short home workouts, ten minutes a day. The app has since retired, unlike my biceps.', 'workout', None, None),
-        ('Collages', '2020', 'Paper, glue and old magazines. Don’t be scared.', 'collages', 'https://www.instagram.com/sm.art.alicious/', None),
+        ('Collages', '2020', 'Paper, glue and old magazines. Don’t be scared.', 'collages', None, None),
         ('Smartalicious', '2020', 'A blog documenting my arty pursuits. Clay, paper and whatever else was lying around.', 'smartalicious', 'https://smartalicious.wordpress.com/', None),
         ('SalsaMuffins', '2015', 'I danced and taught rueda de casino. This was the first (and lamest) website I ever made, now gone.', 'salsa', None, None),
     ]),
@@ -315,7 +315,7 @@ SECTIONS = [
         ('How to launch yourself as a brand', '2018', 'A talk at London Hack’n’Tell. How to believe your own hype in four hours.', 'talk-brand', 'https://docs.google.com/presentation/d/1zPcw_VDO_5hZILpKXeItSmQ8kjyxqKfgCqVgpZw1mqw/edit?usp=sharing', None),
         ('Chatbots are the answer', '2018', 'A talk at Nomad Cafe in Las Palmas. To all your woes, apparently.', 'talk-chatbots', 'https://docs.google.com/presentation/d/1bUzzbF59zKYIjSskbBp9FlpjJ1155uITZM1gFDNB0aY/edit?usp=sharing', None),
         ('Research-based career planning', '2019', 'A workshop at Hustler Villa in Bali and Hub53 in Chiang Mai. How to craft a dream career, according to research.', 'talk-career', 'https://docs.google.com/presentation/d/1Ro7wZ1Iejhx01WK3S4Ev-eeympmuOco-dr-6XUDvG6w/edit?usp=sharing', None),
-        ('Intro to AI safety', '2024–25', 'Three intro talks on AI safety and alignment, at co-working spaces in Malaysia, Vietnam and Berlin. For people who’d heard the hype and wanted the worry.', None, 'https://docs.google.com/presentation/d/1agGuDVXl2M3aZnrO4LHKAEYsoGN4YUO2s-bh7CPTz98/edit?usp=sharing', 'AI?'),
+        ('Intro to AI safety', '2024–25', 'Three intro talks on AI safety and alignment, at co-working spaces in Malaysia, Vietnam and Berlin. For people who’d heard the hype and wanted the worry.', 'talk-ai', 'https://docs.google.com/presentation/d/1agGuDVXl2M3aZnrO4LHKAEYsoGN4YUO2s-bh7CPTz98/edit?usp=sharing', None),
     ]),
 ]
 
