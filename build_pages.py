@@ -382,7 +382,7 @@ PROJECTS_BODY = """
   <section class="hero">
     <div>
       <h1>Projects <i>in progress</i>.</h1>
-      <p>Things I made because I wanted to. Pull one from the stack, or browse the shelves below.</p>
+      <p>Things I worked on because I wanted to. Pull one from the stack, or browse the shelves below.</p>
     </div>
 {deck}
   </section>
