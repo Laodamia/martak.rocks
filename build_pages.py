@@ -305,7 +305,7 @@ SECTIONS = [
         ('Review Everything!', '2023–now', 'Silly, narrative, and sometimes poetic Google Maps reviews. 300+ as of now. Ask me about my fav one!', 'reviews', 'https://maps.app.goo.gl/mJYKFWvYLoHwY6i28', None),
         ('Accountability coaching', '2020–21', 'My coaching business, helping entrepreneurs actually finish their projects. The site lives on in the web archive.', 'coaching', 'https://web.archive.org/web/20210418091907/https://www.accountabilitycoa.ch/', None),
         ('10min Strength', '2020', 'A workout app: short home workouts, ten minutes a day. The app has since retired, unlike my biceps.', 'workout', None, None),
-        ('Collages', '2020', 'Paper, glue and old magazines. Don’t be scared. They used to live on my Instagram, until Instagram deleted the account.', 'collages', None, None),
+        ('Collages', '2020', 'Paper, glue and old magazines. Don’t be scared. They used to live on my Instagram, until Instagram deleted the account. Now they live in a photo album.', 'collages', 'https://photos.google.com/share/AF1QipNNJSLR-Y2KJuZjRZz0UTog9-n0MEGVSpt8pJsM-E5b1UZT6UkIBdBjjQ1jxBjSCg?key=OTRZY0c4WWRZOFV5MmZsNGRrZ3hZWmdBU2lSdlJR', None),
         ('Smartalicious', '2020', 'A blog documenting my arty pursuits. Clay, paper and whatever else was lying around.', 'smartalicious', 'https://smartalicious.wordpress.com/', None),
         ('SalsaMuffins', '2015', 'I danced and taught rueda de casino. This was the first (and lamest) website I ever made, now gone.', 'salsa', None, None),
     ]),
