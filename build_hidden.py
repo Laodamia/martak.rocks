@@ -335,5 +335,5 @@ write("worldview.html", title, page_body(intro, "", body), listed=True)
 md = open(f"{C}/causes.md", encoding="utf-8").read()
 title = re.search(r"^# (.*)$", md, flags=re.M).group(1)
 intro, toc, body = render(read(f"{C}/causes.md"), toc_levels=())
-CAUSES_COVER = '<figure class="cover"><img src="img/causes/cover.jpg" alt="" width="1800" height="540"><figcaption>Photo: Edu Lauton on <a href="https://unsplash.com/photos/TyQ-0lPp6e4">Unsplash</a></figcaption></figure>\n'
+CAUSES_COVER = '<figure class="cover"><img src="img/causes/cover-painting.jpg" alt="Painting of a sleeping baby in a glass box, captioned: Tú dices que estás bien, pero no es cierto (You say you are fine, but it is not true)." width="1800" height="652"><figcaption>Julio Gal&aacute;n, <em>You say you are okay, but that isn&rsquo;t true</em>, 1986. <a href="https://www.stedelijk.nl/nl/collectie/maker/8458-julio-galan">Stedelijk Museum Amsterdam</a>. Photo: me</figcaption></figure>\n'
 write("causes.html", title, page_body(intro, "", body), cover=CAUSES_COVER, listed=True)
