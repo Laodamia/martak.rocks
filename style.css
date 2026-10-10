@@ -165,3 +165,19 @@ footer a:hover { color: var(--text); }
 .me-hero p { max-width: none; }
 .me-hero p:last-child { margin-bottom: 0; }
 .me-hero .photo-deck { padding-bottom: 6px; }
+
+/* Conversation menu: coloured blocks in a mosaic */
+.menu-head { padding: 56px 0 32px; }
+.menu-head p { color: var(--muted); font-size: 18px; margin: 0; max-width: none; }
+.menu { columns: 3 300px; column-gap: 20px; margin-bottom: 96px; }
+.mblock { break-inside: avoid; margin: 0 0 20px; padding: 24px 26px 18px; border-radius: 22px; color: #fdf6ec; }
+.mblock h2 { font-family: var(--serif); font-weight: 800; font-size: 24px; line-height: 1.15; margin: 0 0 12px; }
+.mblock ul { list-style: none; margin: 0; padding: 0; }
+.mblock li { padding: 7px 0; border-top: 1px solid rgba(253, 246, 236, 0.22); font-size: 16px; line-height: 1.45; }
+.mblock.m0 { background: var(--k1); }
+.mblock.m1 { background: var(--k2); }
+.mblock.m2 { background: var(--k3); }
+.mblock.m3 { background: var(--k4); color: var(--ink); }
+.mblock.m3 li { border-top-color: rgba(34, 32, 29, 0.18); }
+.mblock.m4 { background: var(--card-front); color: var(--ink); }
+.mblock.m4 li { border-top-color: rgba(34, 32, 29, 0.14); }

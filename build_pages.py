@@ -27,7 +27,7 @@ HEAD = """<!doctype html>
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
-</head>
+{extra}</head>
 <body>
 <div class="wrap">
   <nav><a class="name" href="index.html">Marta Krzeminska</a><div>{links}</div></nav>
@@ -43,10 +43,10 @@ BLOCKS = '<div class="blocks" aria-hidden="true"><span class="k1"></span><span c
 CURRENT = ' aria-current="page"'
 
 
-def page(fname, title, body, script="", current=None):
+def page(fname, title, body, script="", current=None, extra=""):
     links = "".join(f'<a href="{h}"{CURRENT if h == (current or fname) else ""}>{l}</a>' for l, h in NAV)
     with open(fname, "w") as f:
-        f.write(HEAD.format(title=title, og_title=title.replace("MK.AI", "Marta Krzeminska"), links=links) + body + FOOT.format(script=script))
+        f.write(HEAD.format(title=title, og_title=title.replace("MK.AI", "Marta Krzeminska"), links=links, extra=extra) + body + FOOT.format(script=script))
 
 
 def card_page(front, items):
@@ -389,6 +389,31 @@ PROJECTS_BODY = """
 {shelves}
 """
 page("projects.html", "Projects · MK.AI", PROJECTS_BODY.format(deck=deck, shelves=shelves()), script)
+
+# Conversation menu: one coloured block per section, laid out as a mosaic (from ../content/conversation-menu.md)
+import html as _html
+import re as _re
+_md = open("../content/conversation-menu.md", encoding="utf-8").read()
+MENU = {}
+for _sec in _re.split(r"^## ", _md, flags=_re.M)[1:]:
+    _head, _, _rest = _sec.partition("\n")
+    MENU[_head.strip()] = [l[2:].strip() for l in _rest.splitlines() if l.startswith("- ")]
+MENU_ORDER = ["Currently into", "Good at", "Life & experiences you can ask me about", "Mind & interpersonal tools I love",
+              "Things I'm pondering", "Want to start", "Want to get better at"]
+_order = [h for h in MENU_ORDER if h in MENU] + [h for h in MENU if h not in MENU_ORDER]
+menu_blocks = "\n".join(
+    f'    <section class="mblock m{i % 5}"><h2>{_html.escape(h)}</h2><ul>'
+    + "".join(f"<li>{_html.escape(x)}</li>" for x in MENU[h]) + "</ul></section>"
+    for i, h in enumerate(_order))
+page("conversation-menu.html", "Conversation menu · MK.AI", f"""
+  <section class="menu-head">
+    <h1>Conversation <i>menu</i>.</h1>
+    <p>Here's some of what I work on and think about. Pick anything, I'm happy to talk about all of it.</p>
+  </section>
+  <div class="menu">
+{menu_blocks}
+  </div>
+""", current="me.html", extra='<meta name="robots" content="noindex">\n')
 
 # Me: pitch + photo on a (non-clickable) stack of cards + links to longer pages
 ME_PHOTOS = ["img/me/marta-1.jpg"]  # more from the photoshoot later
