@@ -390,21 +390,36 @@ PROJECTS_BODY = """
 """
 page("projects.html", "Projects · MK.AI", PROJECTS_BODY.format(deck=deck, shelves=shelves()), script)
 
-# Me: pull a random fact
-FACTS = [
-    "I like being on trains and on bridges.",
-    "I'm in bed by 10.15 pm, seven days a week.",
-    "I find the smell of most cosmetics more distracting than pleasant.",
-    "My favourite snack is thin corn cakes.",
-    "My recurring nightmare is being almost late for a train, a plane or a bus.",
+# Me: pitch + photo on a (non-clickable) stack of cards + links to longer pages
+ME_PHOTOS = ["img/me/marta-1.jpg"]  # more from the photoshoot later
+ME_LINKS = [
+    ("Conversation menu", "conversation-menu.html", "What I'm into, what I'm good at, what to ask me about."),
+    ("Worldview in 5 books", "worldview.html", "The books that shaped how I think."),
+    ("Causes worth your support", "causes.html", "Where I'd point your money, or a gift for me."),
 ]
-deck, script = card_page("Pull a fact", FACTS)
-page("me.html", "Me · MK.AI", f"""
-  <section class="hero">
-    <div>
-      <h1>Me, <i>permanently in progress</i>.</h1>
-      <p>The full page is on its way. For now, a few random facts.</p>
-    </div>
-{deck}
+import os
+# Only list pages that are built, so nothing links to a 404 while drafts are being edited.
+me_links = "\n".join(f'      <li><b><a href="{h}">{t}</a></b><span>{d}</span></li>' for t, h, d in ME_LINKS if os.path.exists(h))
+me_more = f"""  <section class="now">
+    <h2>More of me</h2>
+    <ul>
+{me_links}
+    </ul>
   </section>
-""", script)
+""" if me_links else ""
+page("me.html", "Me · MK.AI", f"""
+  <section class="hero me-hero">
+    <div>
+      <h1>In bed by 10.30, <i>very good company</i> until then.</h1>
+      <p>I care about <em>reducing suffering</em>, about <em>AI going well</em>, and about thinking clearly enough to tell which of my ideas are wrong. You can probably guess I've been around <em>effective altruism</em> and the <em>rationality</em> community for a while.</p>
+      <p>I like conversations that <em>skip the small talk</em>, people who agentically shape their life and leave things better than they found them (like refilling the water tank in a public coffee machine).</p>
+    </div>
+    <div class="deck photo-deck">
+      {BLOCKS}
+      <div class="pstack">
+        <span class="under u1"></span><span class="under u2"></span>
+        <img src="{ME_PHOTOS[0]}" alt="Marta, selfie on a playground in Berlin" width="900" height="1200">
+      </div>
+    </div>
+  </section>
+{me_more}""")

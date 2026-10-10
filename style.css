@@ -151,3 +151,17 @@ footer a:hover { color: var(--text); }
   .pcard .row { grid-template-columns: 1fr 100px; gap: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .pcard, .pcard .pic img, .pcard .cover b { transition: none; } .pcard small.ongoing::before { animation: none; } }
+
+/* Me page: photo on a stack of cards (not clickable) */
+.photo-deck { padding: 40px 0; }
+.pstack { position: relative; width: 100%; max-width: 320px; aspect-ratio: 3 / 4; margin: 0 auto; }
+.pstack .under, .pstack img { position: absolute; inset: 0; border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+.pstack .u1 { background: var(--card-front); transform: rotate(-7deg) translate(-14px, 6px); }
+.pstack .u2 { background: var(--card-back); transform: rotate(5deg) translate(12px, -4px); }
+.pstack img { width: 100%; height: 100%; object-fit: cover; border: 10px solid var(--card-back); transform: rotate(-1.5deg); }
+.hero p em { color: var(--text); }
+/* Me page: text runs the full column width and its last line sits level with the photo's bottom edge */
+.me-hero { align-items: end; }
+.me-hero p { max-width: none; }
+.me-hero p:last-child { margin-bottom: 0; }
+.me-hero .photo-deck { padding-bottom: 6px; }
