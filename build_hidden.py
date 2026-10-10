@@ -144,7 +144,7 @@ def polish(out):
     # A list followed by a single image: put them side by side, like Notion's two columns.
     for fig in soup.find_all("figure"):
         prev = fig.find_previous_sibling()
-        if fig.parent.name in ("li", "div") or prev is None or prev.name != "ul":
+        if fig.parent.name in ("li", "div") or prev is None or prev.name != "ul" or len(prev.get_text()) > 400:  # short lists only (Date Me basics)
             continue
         box = soup.new_tag("div", attrs={"class": "side"})
         prev.insert_before(box)
