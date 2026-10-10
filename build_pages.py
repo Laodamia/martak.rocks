@@ -420,7 +420,7 @@ ME_PHOTOS = ["img/me/marta-1.jpg"]  # more from the photoshoot later
 ME_LINKS = [
     ("Conversation menu", "conversation-menu.html", "What I'm into, what I'm good at, what to ask me about."),
     ("Worldview in 5 books", "worldview.html", "The books that shaped how I think."),
-    ("Causes worth your support", "causes.html", "Where I'd point your money, or a gift for me."),
+    ("Ideas worth your support", "causes.html", "Where I would point your eyes, mind, and money."),
 ]
 import os
 # Only list pages that are built, so nothing links to a 404 while drafts are being edited.
