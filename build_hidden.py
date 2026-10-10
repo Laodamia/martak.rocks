@@ -22,8 +22,7 @@ HEAD = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>{title} · Marta Krzeminska</title>
+{robots}<title>{title} · Marta Krzeminska</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -51,9 +50,10 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-def write(fname, title, body, by=BY, script="", cover=""):
+def write(fname, title, body, by=BY, script="", cover="", listed=False):
+    robots = "" if listed else '<meta name="robots" content="noindex, nofollow">\n'
     with open(fname, "w", encoding="utf-8") as f:
-        f.write(HEAD.format(title=html.escape(title), by=by, cover=cover) + body + FOOT.format(script=script))
+        f.write(HEAD.format(title=html.escape(title), by=by, cover=cover, robots=robots) + body + FOOT.format(script=script))
     print("wrote", fname)
 
 
@@ -303,3 +303,37 @@ blurb = re.search(r"^INTRO: (.*)$", index_md, flags=re.M)
 blurb = blurb.group(1) if blurb else "The beliefs, principles and lessons I live by, rewritten every year or so. Newest first."
 write("codex-vitae.html", "Codex Vitae",
       f'<section class="intro"><p>{html.escape(blurb)}</p></section>\n<ul class="years">\n' + "\n".join(reversed(tiles)) + "\n</ul>\n")
+
+
+# ---------- Worldview in 5 books (linked from the Me page) ----------
+md = open(f"{C}/worldview.md", encoding="utf-8").read()
+title = re.search(r"^# (.*)$", md, flags=re.M).group(1)
+md = read(f"{C}/worldview.md")
+# Intro is written one sentence per line: questions become an italic list, other lines their own paragraphs.
+head, sep, tail = md.partition("\n---")
+lines = [l.strip() for l in head.strip().split("\n") if l.strip()]
+head = "\n\n".join(f"- *{l}*" if l.endswith("?") else l for l in lines).replace("*\n\n- *", "*\n- *")
+md = head + "\n" + sep + tail
+covers = re.findall(r"!\[\]\(worldview/([^)]+)\)", md)        # one cover per book, in book order
+md = re.sub(r"^!\[\]\(worldview/[^)]+\)\s*$\n?", "", md, flags=re.M)
+intro, toc, body = render(md, toc_levels=())
+soup = BeautifulSoup(body, "html.parser")
+for h, cover in zip(soup.find_all("h2"), covers):   # wrap each book: cover + heading + text up to the next book or rule
+    box = soup.new_tag("div", attrs={"class": "book"})
+    h.insert_before(box)
+    box.append(soup.new_tag("img", attrs={"class": "bookcover", "src": f"img/worldview/{cover}", "alt": "", "loading": "lazy"}))
+    node = h
+    while node is not None and (node is h or node.name not in ("h2", "hr")):
+        nxt = node.next_sibling
+        box.append(node.extract())
+        node = nxt
+body = str(soup)
+write("worldview.html", title, page_body(intro, "", body), listed=True)
+
+
+# ---------- Causes Worth Your Support (linked from the Me page) ----------
+md = open(f"{C}/causes.md", encoding="utf-8").read()
+title = re.search(r"^# (.*)$", md, flags=re.M).group(1)
+intro, toc, body = render(read(f"{C}/causes.md"), toc_levels=())
+CAUSES_COVER = '<figure class="cover"><img src="img/causes/cover.jpg" alt="" width="1800" height="540"><figcaption>Photo: Edu Lauton on <a href="https://unsplash.com/photos/TyQ-0lPp6e4">Unsplash</a></figcaption></figure>\n'
+write("causes.html", title, page_body(intro, "", body), cover=CAUSES_COVER, listed=True)
