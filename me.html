@@ -36,7 +36,10 @@
       <div class="blocks" aria-hidden="true"><span class="k1"></span><span class="k2"></span><span class="k3"></span><span class="k4"></span></div>
       <div class="pstack">
         <span class="under u1"></span><span class="under u2"></span>
-        <img src="img/me/marta-1.jpg" alt="Marta, selfie on a playground in Berlin" width="900" height="1200">
+        <img src="img/me/marta-1.jpg" alt="Marta, selfie on a playground in Berlin" width="900" height="1200" class="top">
+        <img src="img/me/marta-2.jpg" alt="Marta laughing in a rainbow jacket" width="900" height="1200">
+        <img src="img/me/marta-3.jpg" alt="Marta hanging upside down off a bench" width="900" height="1200">
+        <button class="pnext" type="button" aria-label="Next photo"></button>
       </div>
     </div>
   </section>
@@ -51,5 +54,13 @@
 
   <footer><a href="mailto:marta@martak.rocks">Email</a><a href="https://www.linkedin.com/in/krzeminskamarta/">LinkedIn</a><a href="https://github.com/Laodamia">GitHub</a><a href="https://www.admonymous.co/marta-krzeminska">Anonymous feedback</a></footer>
 </div>
+<script>
+const pimgs = [...document.querySelectorAll('.pstack img')]; let pi = 0;
+document.querySelector('.pnext').addEventListener('click', () => {
+  const cur = pimgs[pi]; cur.classList.add('fling');
+  pi = (pi + 1) % pimgs.length; pimgs[pi].classList.add('top');
+  setTimeout(() => cur.classList.remove('top', 'fling'), 450);
+});
+</script>
 </body>
 </html>

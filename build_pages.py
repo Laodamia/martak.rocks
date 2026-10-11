@@ -129,7 +129,7 @@ CAREER = [
     "Got a part-time job.",
     "Ran another marathon. Istanbul.",
     "Put myself on a contract. It's part of my job.",
-    "Ran another marathon. Rome.",
+    "Ran another marathon. Tromsø.",
 ]
 # Shown in order after the last step; the final one stays put.
 AFTER = [
@@ -415,8 +415,23 @@ page("conversation-menu.html", "Conversation menu · MK.AI", f"""
   </div>
 """, current="me.html", extra='<meta name="robots" content="noindex">\n')
 
-# Me: pitch + photo on a (non-clickable) stack of cards + links to longer pages
-ME_PHOTOS = ["img/me/marta-1.jpg"]  # more from the photoshoot later
+# Me: pitch + photo stack (click flings the top photo off, no hint on purpose) + links to longer pages
+ME_PHOTOS = [
+    ("img/me/marta-1.jpg", "Marta, selfie on a playground in Berlin"),
+    ("img/me/marta-2.jpg", "Marta laughing in a rainbow jacket"),
+    ("img/me/marta-3.jpg", "Marta hanging upside down off a bench"),
+]
+TOP = ' class="top"'
+me_imgs = "\n".join(f'        <img src="{src}" alt="{alt}" width="900" height="1200"{TOP if i == 0 else ""}>' for i, (src, alt) in enumerate(ME_PHOTOS))
+ME_SCRIPT = """<script>
+const pimgs = [...document.querySelectorAll('.pstack img')]; let pi = 0;
+document.querySelector('.pnext').addEventListener('click', () => {
+  const cur = pimgs[pi]; cur.classList.add('fling');
+  pi = (pi + 1) % pimgs.length; pimgs[pi].classList.add('top');
+  setTimeout(() => cur.classList.remove('top', 'fling'), 450);
+});
+</script>
+"""
 ME_LINKS = [
     ("Conversation menu", "conversation-menu.html", "What I'm into, what I'm good at, what to ask me about."),
     ("Worldview in 5 books", "worldview.html", "The books that shaped how I think."),
@@ -443,8 +458,9 @@ page("me.html", "Me · MK.AI", f"""
       {BLOCKS}
       <div class="pstack">
         <span class="under u1"></span><span class="under u2"></span>
-        <img src="{ME_PHOTOS[0]}" alt="Marta, selfie on a playground in Berlin" width="900" height="1200">
+{me_imgs}
+        <button class="pnext" type="button" aria-label="Next photo"></button>
       </div>
     </div>
   </section>
-{me_more}""")
+{me_more}""", script=ME_SCRIPT)
