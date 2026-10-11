@@ -162,7 +162,7 @@ ROLES = (
              "Make sure everyone gets paid, legally and on time. Also: contracts, bookkeeping, and automating anything that happens twice.",
          ])
     + role("Operations Support &amp; AI Policy Researcher", '<a href="https://www.longtermresilience.org">Centre for Long-Term Resilience</a>', "2024&ndash;25",
-           "I helped a UK AI policy unit punch above its weight.", [
+           "I helped a UK AI policy unit run smoother.", [
                'Co-authored <a href="https://www.longtermresilience.org/reports/frontier-ai-safety-frameworks-need-to-include-risk-governance/">Why frontier AI safety frameworks need to include risk governance</a>.',
                "Managed the inbox and calendar of Jess Whittlestone, head of the AI Policy Unit.",
                "Guided the team to structure their tasks and priorities.",
