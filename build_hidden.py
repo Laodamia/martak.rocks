@@ -34,7 +34,7 @@ HEAD = """<!doctype html>
 <div class="strip" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 <main>
 {cover}<header>
-  <h1>{title}</h1>
+  <h1>{h1}</h1>
   <p class="by">{by}</p>
 </header>
 """
@@ -50,10 +50,10 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-def write(fname, title, body, by=BY, script="", cover="", listed=False):
+def write(fname, title, body, by=BY, script="", cover="", listed=False, h1=None):
     robots = "" if listed else '<meta name="robots" content="noindex, nofollow">\n'
     with open(fname, "w", encoding="utf-8") as f:
-        f.write(HEAD.format(title=html.escape(title), by=by, cover=cover, robots=robots) + body + FOOT.format(script=script))
+        f.write(HEAD.format(title=html.escape(title), h1=h1 or html.escape(title), by=by, cover=cover, robots=robots) + body + FOOT.format(script=script))
     print("wrote", fname)
 
 
@@ -233,12 +233,13 @@ write("date-me-is-this.html", "Is this…", page_body(intro, "", body), by='<a h
 
 # ---------- Marketing Consulting ----------
 md = read(f"{C}/marketing-consulting.md")
-md = re.sub(r"!\[digital\.png\]\(marketing-consulting/digital\.png\)\s*", "", md)
-md = re.sub(r"\(Marta-bot%20Projects%20[0-9a-f]+\.md\)", "(mailto:marta@martak.rocks)", md)
-md = re.sub(r"^\[Marketing Competencies\]\(.*\)\s*$", "", md, flags=re.M)
-md = re.sub(r"^sort:.*\n(\s*\n)*Proficiency: descending\s*$", "", md, flags=re.M)
-md = md.replace("as as a", "as a")
-intro, toc, body = render(md, toc_levels=())
+top_md, _, notes_md = md.partition("<!-- table -->")
+hero_md, _, above_md = top_md.partition("<!-- above table -->")
+above_html = markdown.markdown(above_md.strip(), extensions=["sane_lists"])
+hero_html = markdown.markdown(hero_md.strip(), extensions=["sane_lists"])
+mk_h1 = re.match(r"^<p>(.*?)</p>", hero_html).group(1)
+hero_html = hero_html[hero_html.index("</p>") + 4:].strip()
+notes_html = markdown.markdown(notes_md.strip(), extensions=["sane_lists"])
 rows = list(csv.DictReader(open(glob.glob(f"{C}/marketing-consulting/*_all.csv")[0], encoding="utf-8-sig")))
 JOY = {"High": 3, "Medium": 2, "Low": 1}
 items = []
@@ -281,8 +282,20 @@ SORT_JS = """<script>
 })();
 </script>
 """
-hero = '<figure><img src="img/marketing/digital.png" alt="" width="1500" height="600"></figure>'
-write("marketing-consulting.html", "Marketing Consulting", page_body(hero + intro, "", body + comps), script=SORT_JS)
+LI_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'
+MAIL_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 5h18v14H3z M3 6l9 7 9-7"/></svg>'
+LI_URL = "https://www.linkedin.com/in/krzeminskamarta/"
+hero = f'''<div class="mk-hero">
+  <div>
+    {hero_html}
+    <p class="mk-cta"><a href="mailto:marta@martak.rocks">Work with me →</a></p>
+  </div>
+  <a class="mk-photo" href="{LI_URL}" title="Find me on LinkedIn" target="_blank" rel="noopener">
+    <img src="img/marketing/marta-bench.jpg" alt="Marta sitting on a park bench, smiling" width="675" height="900">
+    <span class="mk-badge">{LI_SVG}</span>
+  </a>
+</div>'''
+write("marketing-consulting.html", "Marketing Consulting", f'<section class="intro">{hero}</section>\n<article>\n<div class="mk-above">{above_html}</div>\n{comps}\n<div class="mk-notes">{notes_html}</div>\n</article>\n', by="", script=SORT_JS, h1=f'<span class="mk-h1">{mk_h1}</span>')
 
 
 # ---------- Codex Vitae ----------

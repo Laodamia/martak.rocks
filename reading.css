@@ -117,3 +117,33 @@ li .mosaic { width: auto; left: 0; transform: none; columns: 2 160px; }
 .book h2 { margin-top: 0; font-size: 24px; }
 .book h2 a { color: inherit; }
 @media (max-width: 560px) { .book { padding-left: 88px; min-height: 110px; } .book .bookcover { width: 72px; } }
+
+/* Marketing Consulting hero: heading + pitch + icons, photo links to LinkedIn */
+.mk-hero { display: grid; grid-template-columns: 1fr 230px; gap: 36px; align-items: center; }
+.mk-hero ul { padding-left: 20px; margin: 12px 0 20px; }
+.mk-hero li { margin: 4px 0; }
+.mk-icons { display: flex; gap: 14px; margin: 0; }
+.mk-icons a { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border-radius: 50%; background: var(--soft); color: var(--accent); transition: background .2s, color .2s; }
+.mk-icons a:hover { background: var(--accent); color: var(--bg); }
+.mk-icons svg { width: 20px; height: 20px; }
+.mk-photo { position: relative; display: block; transform: rotate(1.5deg); transition: transform .3s; }
+.mk-photo img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+.mk-photo:hover { transform: rotate(0deg) scale(1.02); }
+.mk-badge { position: absolute; right: -10px; bottom: -10px; width: 44px; height: 44px; border-radius: 50%; background: var(--bg); color: var(--accent); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(.7); transition: opacity .25s, transform .25s; box-shadow: 0 6px 16px rgba(0,0,0,.25); }
+.mk-badge svg { width: 20px; height: 20px; }
+.mk-photo:hover .mk-badge, .mk-photo:focus-visible .mk-badge { opacity: 1; transform: scale(1); }
+@media (hover: none) { .mk-badge { opacity: 1; transform: scale(1); } }
+.mk-notes { margin-top: 40px; color: var(--muted); font-size: 15px; }
+header .by:empty { display: none; }
+@media (max-width: 600px) { .mk-hero { grid-template-columns: 1fr; } .mk-photo { max-width: 260px; } }
+.mk-hero { margin-bottom: 48px; }
+.mk-h1 { display: block; white-space: nowrap; font-size: 42px; }
+@media (max-width: 700px) { .mk-h1 { white-space: normal; font-size: clamp(32px, 9vw, 42px); } }
+.mk-h1 em { color: var(--k1); font-style: normal; }
+.mk-hero { margin-top: 8px; }
+.mk-cta { font-weight: 600; font-size: 19px; margin: 0; }
+.mk-cta a { text-decoration: none; }
+@media (prefers-color-scheme: dark) { .mk-h1 em { color: #6fbfac; } }
+.mk-above { margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--rule); }
+.mk-above h2 { font-family: var(--serif); font-weight: 800; font-size: 30px; line-height: 1.15; margin: 0 0 8px; }
+.mk-above p { color: var(--muted); margin: 0 0 20px; }
