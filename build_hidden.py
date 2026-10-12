@@ -315,7 +315,7 @@ index_md = open(f"{C}/codex-vitae.md", encoding="utf-8").read()
 blurb = re.search(r"^INTRO: (.*)$", index_md, flags=re.M)
 blurb = blurb.group(1) if blurb else "The beliefs, principles and lessons I live by, rewritten every year or so. Newest first."
 write("codex-vitae.html", "Codex Vitae",
-      f'<section class="intro"><p>{html.escape(blurb)}</p></section>\n<ul class="years">\n' + "\n".join(reversed(tiles)) + "\n</ul>\n")
+      f'<section class="intro">{markdown.markdown(blurb)}</section>\n<ul class="years">\n' + "\n".join(reversed(tiles)) + "\n</ul>\n")
 
 
 # ---------- Worldview in 5 books (linked from the Me page) ----------
