@@ -147,3 +147,11 @@ header .by:empty { display: none; }
 .mk-above { margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--rule); }
 .mk-above h2 { font-family: var(--serif); font-weight: 800; font-size: 30px; line-height: 1.15; margin: 0 0 8px; }
 .mk-above p { color: var(--muted); margin: 0 0 20px; }
+
+/* Other pages index */
+.others { list-style: none; padding: 0; margin: 32px 0 0; }
+.others li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.others li > a { font-family: var(--serif); font-weight: 800; font-size: 24px; text-decoration: none; }
+.others li p { grid-column: 1; margin: 0; color: var(--muted); font-size: 15px; }
+.others .copy { grid-column: 2; grid-row: 1 / span 2; font: 500 14px Inter, system-ui, sans-serif; color: var(--text); background: var(--soft); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.others .copy:hover { border-color: var(--accent); color: var(--accent); }

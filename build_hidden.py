@@ -350,3 +350,27 @@ title = re.search(r"^# (.*)$", md, flags=re.M).group(1)
 intro, toc, body = render(read(f"{C}/causes.md"), toc_levels=())
 CAUSES_COVER = '<figure class="cover"><img src="img/causes/cover-painting.jpg" alt="Painting of a sleeping baby in a glass box, captioned: Tú dices que estás bien, pero no es cierto (You say you are fine, but it is not true)." width="1800" height="652"><figcaption>Julio Gal&aacute;n, <em>You say you are okay, but that isn&rsquo;t true</em>, 1986. <a href="https://www.stedelijk.nl/nl/collectie/maker/8458-julio-galan">Stedelijk Museum Amsterdam</a>. Photo: me</figcaption></figure>\n'
 write("causes.html", title, page_body(intro, "", body), cover=CAUSES_COVER, listed=True)
+
+
+# ---------- Other: index of the unlinked pages (itself unlinked) ----------
+OTHER = [
+    ("manual-of-me.html", "Manual of Me", "How I work, what I need, how to get the best out of me."),
+    ("date-me.html", "Date Me", "My date-me doc."),
+    ("marketing-consulting.html", "Marketing Consulting", "What I can help with as a marketing consultant."),
+    ("codex-vitae.html", "Codex Vitae", "The beliefs, principles and lessons I aim to live by."),
+]
+items = "\n".join(
+    f'<li><a href="{f}">{html.escape(t)}</a><p>{html.escape(d)}</p>'
+    f'<button class="copy" data-url="https://martak.rocks/{f}">Copy link</button></li>'
+    for f, t, d in OTHER)
+COPY_JS = """<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    navigator.clipboard.writeText(b.dataset.url).then(function () {
+      b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy link'; }, 1500);
+    });
+  });
+});
+</script>
+"""
+write("other.html", "Other pages", f'<section class="intro"><p>Pages that aren\'t linked from the rest of the site.</p></section>\n<ul class="others">\n{items}\n</ul>\n', script=COPY_JS)
