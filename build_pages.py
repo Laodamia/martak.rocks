@@ -72,26 +72,6 @@ QUESTIONS = [
     "What are you avoiding saying to someone?",
     "What does a really good day look like for you?",
 ]
-deck, script = card_page("Draw a question", QUESTIONS)
-page("index.html", "MK.AI", f"""
-  <section class="hero">
-    <div>
-      <h1>I build systems and communities for <i>AI safety</i>.</h1>
-      <p>Outside work, I facilitate authentic relating and radical honesty events. Which is why there's a card here for you.</p>
-      <p>Before this? Start-ups: growth marketing, data analysis, and coaching entrepreneurs to finish what they started.</p>
-    </div>
-{deck}
-  </section>
-
-  <section class="now">
-    <h2>Now</h2>
-    <ul>
-      <li><b><a href="https://futureimpact.group">FIG</a></b><span>Building the systems behind AI safety fellowships.</span></li>
-      <li><b>Mentoring</b><span>Women in AI safety, through Magnify Mentoring.</span></li>
-      <li><b>Community</b><span>Running a Women/NB circle in Berlin, and leading women in AI safety meetups at EAGs.</span></li>
-    </ul>
-  </section>
-""", script)
 
 # Work: three expandable roles, a one-line "before that", and a career you can push along.
 CAREER = [
@@ -447,12 +427,11 @@ me_more = f"""  <section class="now">
     </ul>
   </section>
 """ if me_links else ""
-page("me.html", "Me · MK.AI", f"""
-  <section class="hero me-hero">
+page("index.html", "MK.AI", f"""
+  <section class="hero">
     <div>
-      <h1>In bed by 10.30, <i>very good company</i> until then.</h1>
-      <p>I care about <em>reducing suffering</em>, about <em>AI going well</em>, and about thinking clearly enough to tell which of my ideas are wrong. You can probably guess I've been around <em>effective altruism</em> and the <em>rationality</em> community for a while.</p>
-      <p>I like conversations that <em>skip the small talk</em>, people who agentically shape their life and leave things better than they found them (like refilling the water tank in a public coffee machine).</p>
+      <h1>I build<br>systems&nbsp;and communities for <i>AI safety</i>.</h1>
+      <p>Outside work, I facilitate authentic relating and radical honesty events. Before this? Start-ups: growth marketing, data analysis, and coaching entrepreneurs to finish what they started.</p>
     </div>
     <div class="deck photo-deck">
       {BLOCKS}
@@ -463,4 +442,24 @@ page("me.html", "Me · MK.AI", f"""
       </div>
     </div>
   </section>
-{me_more}""", script=ME_SCRIPT)
+
+  <section class="now">
+    <h2>Now</h2>
+    <ul>
+      <li><b><a href="https://futureimpact.group">FIG</a></b><span>Building the systems behind AI safety fellowships.</span></li>
+      <li><b>Mentoring</b><span>Women in AI safety, through Magnify Mentoring.</span></li>
+      <li><b>Community</b><span>Running a Women/NB circle in Berlin, and leading women in AI safety meetups at EAGs.</span></li>
+    </ul>
+  </section>
+""", script=ME_SCRIPT)
+deck, script = card_page("Draw a question", QUESTIONS)
+page("me.html", "Me · MK.AI", f"""
+  <section class="hero me-hero">
+    <div>
+      <h1>In bed by 10.30, <i>very good company</i> until then.</h1>
+      <p>I care about <em>reducing suffering</em>, about <em>AI going well</em>, and about thinking clearly enough to tell which of my ideas are wrong. You can probably guess I've been around <em>effective altruism</em> and the <em>rationality</em> community for a while.</p>
+      <p>I like conversations that <em>skip the small talk</em>, people who agentically shape their life and leave things better than they found them (like refilling the water tank in a public coffee machine).</p>
+    </div>
+{deck}
+  </section>
+{me_more}""", script)
